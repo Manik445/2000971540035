@@ -16,7 +16,22 @@ app.get('/getSchedule', async function (req, res) {
     const token = access_token.data.access_token
     const scheduleRes = await axios.get("http://20.244.56.144/train/trains", { headers: {"Authorization" : `Bearer ${token}`}})
     const schedule = scheduleRes.data
-    res.send(schedule)
+    const filteredSchedule = schedule.filter((train) => {
+      const traindepartureTime = train.departureTime
+      const currentDate  = new Date()
+      const trainDate = new Date();
+      trainDate.setHours(traindepartureTime.Hours)
+      trainDate.setMinutes(traindepartureTime.Minutes)
+      trainDate.setSeconds(traindepartureTime.Seconds)
+      var difference = currentDate.getTime() - trainDate.getTime();
+      var resultInMinutes = Math.round(difference / 60000);
+      if(resultInMinutes<=30) {
+        return false
+      } else {
+        return true
+      }
+    })
+    res.send(filteredSchedule)
   } catch(e) {
 
   }
