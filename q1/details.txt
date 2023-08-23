@@ -1,0 +1,8 @@
+{
+    "companyName": "2000971540035",
+    "clientID": "8885e728-f90a-491f-bf41-674744ec2013",
+    "clientSecret": "EDnTAfUSllforGFt",
+    "ownerName": "Manik Gupta",
+    "ownerEmail": "manikgupta919@gmail.com",
+    "rollNo": "2000971540035"
+}
